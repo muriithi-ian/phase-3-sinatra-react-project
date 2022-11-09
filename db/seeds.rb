@@ -175,15 +175,44 @@ book.each do |item|
         available: item[:available]
     )
 end
+
+
+
 puts "Creating Categories..."
-Category1 = Category.create(name:"Crime")
-Category2 = Category.create(name:"Adventure Fiction")
-Category3 = Category.create(name:"Biography")
-Category4 = Category.create(name:"Political Fiction")
-Category5 = Category.create(name:"Historical")
-Category6 = Category.create(name:"Romance")
-Category7 = Category.create(name:"Financial")
-Category8 = Category.create(name:"Thriller")
+
+category = [
+	{
+		name: "Crime"
+	},
+	{
+		name: "Adventure Fiction"
+	},
+	{
+		name: "Biography"
+	},
+	{
+		name: "Political Fiction"
+	},
+	{
+		name: "Historical"
+	},
+	{
+		name: "Romance"
+	},
+	{
+		name: "Financial"
+	},
+	{
+		name: "Thriller"
+	}
+];
+category.each do |i|
+	Category.create(
+		name: i[:name]
+	)
+end
+
+
 
 puts "Creating Members..."
 
