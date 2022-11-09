@@ -187,31 +187,37 @@ Category8 = Category.create(name:"Thriller")
 
 puts "Creating Members..."
 
+
 member = [
     {
         name: "Mark",
         is_librarian: 1,
 		password: "password",
+    username: "mark"
     },
     {
         name: "Kelly",
         is_librarian: 0,
 		password: "password",
+     username: "kelly"
     },
 	{
         name: "Norman",
         is_librarian: 1,
 		password: "password",
+    useusername: "norman"
     },
     {
         name: "Sandra",
         is_librarian: 1,
 		password: "password",
+    username: "sandra"
     },
     {
         name: "Hannah",
         is_librarian: 0,
 		password: "password",
+    username: "hannah"
     },
 ];
 member.each do |i|
