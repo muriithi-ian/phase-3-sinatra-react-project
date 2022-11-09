@@ -50,7 +50,7 @@ book = [
 		description: "The Da Vinci Code is a 2003 mystery thriller novel by Dan Brown. It is Brown's second novel to include the character Robert Langdon the first was his 2000 novel Angels & Demons. The Da Vinci Code follows symbologist Robert Langdon and cryptologist Sophie Neveu after a murder in the Louvre Museum in Paris causes them to become involved in a battle between the Priory of Sion and Opus Dei over the possibility of Jesus Christ and Mary Magdalene having had a child together.",
 		category_id: 8,
 		image: "https://covers.openlibrary.org/w/id/9255229-M.jpg",
-        available: 1
+        available: 1,
 	},
 	{
 		title: "The Eyes OF Darkness",
@@ -187,10 +187,45 @@ Category8 = Category.create(name:"Thriller")
 
 puts "Creating Members..."
 
-Member1 = Member.create(name: "Mildred", is_librarian: 0, password: "password", username: "mildred")
-Member2 = Member.create(name: "Mark", is_librarian: 0, password: "password", username: "mark")
-Member3 = Member.create(name: "Kelly", is_librarian: 1, password: "password", username: "kelly")
-Member4 = Member.create(name: "Elvis", is_librarian: 1, password: "password", username: "elvis")
-Member5 = Member.create(name: "Hannah", is_librarian: 0, password: "password", username: "hannah")
+
+member = [
+    {
+        name: "Mark",
+        is_librarian: 1,
+		password: "password",
+    username: "mark"
+    },
+    {
+        name: "Kelly",
+        is_librarian: 0,
+		password: "password",
+     username: "kelly"
+    },
+	{
+        name: "Norman",
+        is_librarian: 1,
+		password: "password",
+    useusername: "norman"
+    },
+    {
+        name: "Sandra",
+        is_librarian: 1,
+		password: "password",
+    username: "sandra"
+    },
+    {
+        name: "Hannah",
+        is_librarian: 0,
+		password: "password",
+    username: "hannah"
+    },
+];
+member.each do |i|
+    Member.create(
+        name: i[:name],
+        is_librarian: i[:is_librarian]
+		password: i[:password]
+    )
+end
 
 puts "✅ Done seeding!"
