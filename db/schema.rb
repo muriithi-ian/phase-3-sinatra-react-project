@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_09_064503) do
+ActiveRecord::Schema.define(version: 2022_11_09_190129) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 2022_11_09_064503) do
   create_table "borrows", force: :cascade do |t|
     t.integer "member_id"
     t.integer "book_id"
-    t.integer "given_by_id"
     t.datetime "borrowed_on"
     t.datetime "returned_on"
     t.datetime "due_date"

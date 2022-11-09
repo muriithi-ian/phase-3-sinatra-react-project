@@ -2,8 +2,7 @@ class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
  #books 
   get "/books" do
-    books = Book.all
-    books.to_json
+    books = Book.all.map { |book_instance| book_instance.get_related_category }.to_json    
   end
 
   get '/books/:id' do
@@ -32,6 +31,8 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/login' do
+    puts params[:username]
+    puts params[:password]
     member = Member.find_by(username: params[:username], password: params[:password])
     if member
       member.to_json

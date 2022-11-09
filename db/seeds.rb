@@ -1,6 +1,40 @@
 puts "🌱 Seeding data..."
 
-puts "Creating Books..."
+puts "Creating Categories..."
+
+category = [
+	{
+		name: "Crime"
+	},
+	{
+		name: "Adventure Fiction"
+	},
+	{
+		name: "Biography"
+	},
+	{
+		name: "Political Fiction"
+	},
+	{
+		name: "Historical"
+	},
+	{
+		name: "Romance"
+	},
+	{
+		name: "Financial"
+	},
+	{
+		name: "Thriller"
+	}
+];
+category.each do |i|
+	Category.create(
+		name: i[:name]
+	)
+end
+
+puts "Creating Books"
 
 
 book = [
@@ -165,96 +199,83 @@ book = [
         available: 1,
 	},
 ];
+
+last_category_id = Category.last.id 
+first_category_id = Category.first.id 
+
 book.each do |item|
     Book.create(
         title: item[:title],
         author: item[:author],
         description: item[:description],
-        category_id: item[:category_id],
+        category_id: rand(first_category_id..last_category_id),
         image: item[:image],
-        available: item[:available]
+        available: 1
     )
 end
 
-
-
-puts "Creating Categories..."
-
-category = [
-	{
-		name: "Crime"
-	},
-	{
-		name: "Adventure Fiction"
-	},
-	{
-		name: "Biography"
-	},
-	{
-		name: "Political Fiction"
-	},
-	{
-		name: "Historical"
-	},
-	{
-		name: "Romance"
-	},
-	{
-		name: "Financial"
-	},
-	{
-		name: "Thriller"
-	}
-];
-category.each do |i|
-	Category.create(
-		name: i[:name]
-	)
-end
-
-
-
 puts "Creating Members..."
-
-
 member = [
     {
         name: "Mark",
         is_librarian: 1,
 		password: "password",
-    username: "mark"
+    	username: "mark"
+    },
+	{
+        name: "Sandra",
+        is_librarian: 0,
+		password: "password",
+    	username: "sandra"
+    },
+	{
+        name: "Norman",
+        is_librarian: 0,
+		password: "password",
+    	username: "norman"
     },
     {
         name: "Kelly",
         is_librarian: 0,
 		password: "password",
-     username: "kelly"
-    },
-	{
-        name: "Norman",
-        is_librarian: 1,
-		password: "password",
-    useusername: "norman"
-    },
-    {
-        name: "Sandra",
-        is_librarian: 1,
-		password: "password",
-    username: "sandra"
-    },
+     	username: "kelly"
+    },    
     {
         name: "Hannah",
         is_librarian: 0,
 		password: "password",
-    username: "hannah"
+    	username: "hannah"
     },
 ];
 member.each do |i|
     Member.create(
         name: i[:name],
         is_librarian: i[:is_librarian],
-		password: i[:password]
+		password: i[:password],
+		username: i[:username]
     )
+end
+
+puts "Seeding borrows"
+#cause a librarian wont borrow
+first_member = Member.first. id 
+last_member = Member.last.id 
+
+first_book = Book.first. id 
+last_book = Book.last.id 
+
+10.times do |i|
+	date_borrow = Faker::Date.between(from: 5.days.ago, to: Date.today)
+	date_return = i % 2 == 0 ? Faker::Date.between(from: '2022-11-10', to: '2022-12-22') : nil
+
+	Borrow.create(
+		member_id: rand(first_member..last_member),
+		book_id: rand(first_book..last_book),
+		borrowed_on: date_borrow,
+		returned_on: date_return,
+		due_date: Faker::Date.forward(days: 23)
+	)
+
 end
 
 puts "✅ Done seeding!"

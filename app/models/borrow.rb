@@ -1,4 +1,8 @@
 class Borrow < ActiveRecord::Base
-    has_many :books
-    belongs_to :fine
+    belongs_to :book
+    belongs_to :member  
+    
+    def get_related_books_members
+        
+    end
 end
