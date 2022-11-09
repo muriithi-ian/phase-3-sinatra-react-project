@@ -252,7 +252,7 @@ member = [
 member.each do |i|
     Member.create(
         name: i[:name],
-        is_librarian: i[:is_librarian]
+        is_librarian: i[:is_librarian],
 		password: i[:password]
     )
 end
