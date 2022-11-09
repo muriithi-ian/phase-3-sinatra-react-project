@@ -191,24 +191,34 @@ member = [
     {
         name: "Mark",
         is_librarian: 1,
+		password: "password",
     },
     {
         name: "Kelly",
         is_librarian: 0,
+		password: "password",
+    },
+	{
+        name: "Norman",
+        is_librarian: 1,
+		password: "password",
     },
     {
         name: "Sandra",
         is_librarian: 1,
+		password: "password",
     },
     {
         name: "Hannah",
         is_librarian: 0,
+		password: "password",
     },
 ];
 member.each do |i|
     Member.create(
         name: i[:name],
         is_librarian: i[:is_librarian]
+		password: i[:password]
     )
 end
 
