@@ -37,6 +37,15 @@ class ApplicationController < Sinatra::Base
     book.to_json
   end
 
+  post '/login' do
+    member = Member.find_by(username: params[:username], password: params[:password])
+    if member
+      member.to_json
+    else
+      {error: "Invalid username or password"}.to_json
+    end
+  end
+
  
 
 end

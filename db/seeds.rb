@@ -187,10 +187,10 @@ Category8 = Category.create(name:"Thriller")
 
 puts "Creating Members..."
 
-Member1 = Member.create(name: "Mildred", is_librarian: 0, password: "password")
-Member2 = Member.create(name: "Mark", is_librarian: 0, password: "password")
-Member3 = Member.create(name: "Kelly", is_librarian: 1, password: "password")
-Member4 = Member.create(name: "Elvis", is_librarian: 1, password: "password")
-Member5 = Member.create(name: "Hannah", is_librarian: 0, password: "password")
+Member1 = Member.create(name: "Mildred", is_librarian: 0, password: "password", username: "mildred")
+Member2 = Member.create(name: "Mark", is_librarian: 0, password: "password", username: "mark")
+Member3 = Member.create(name: "Kelly", is_librarian: 1, password: "password", username: "kelly")
+Member4 = Member.create(name: "Elvis", is_librarian: 1, password: "password", username: "elvis")
+Member5 = Member.create(name: "Hannah", is_librarian: 0, password: "password", username: "hannah")
 
 puts "✅ Done seeding!"
