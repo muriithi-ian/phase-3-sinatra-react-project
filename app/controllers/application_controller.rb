@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base
 
   get '/books/:id' do
     book = Book.find(params[:id])
-    book.to_json
+    book.get_related_category.to_json
   end
   
   post '/books' do
@@ -23,6 +23,7 @@ class ApplicationController < Sinatra::Base
   end
   
   patch '/books/:id' do
+    puts params[:available]
     book = Book.find(params[:id])
     book.update(
       available: params[:available]
@@ -126,8 +127,7 @@ class ApplicationController < Sinatra::Base
   post '/borrows' do
     borrow = Borrow.create(
       member_id:params[:member_id],
-      book_id:params[:book_id], 
-      given_by_id:params[:given_by_id],
+      book_id:params[:book_id],      
       borrowed_on:params[:borrowed_on], 
       returned_on:params[:returned_on], 
       due_date:params[:due_date]
